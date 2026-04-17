@@ -1,0 +1,210 @@
+/* ── Landing Page ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  position: relative;
+}
+
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  margin-bottom: 80px;
+  max-width: 720px;
+}
+
+.title {
+  font-family: var(--font-syne), var(--font-display);
+  font-weight: 800;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--white) 0%, rgba(255,255,255,0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: var(--white-dim);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── Cards Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition:
+    transform 0.5s var(--ease-elastic),
+    border-color 0.5s var(--ease-elastic),
+    box-shadow 0.5s var(--ease-elastic);
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  min-height: 220px;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-elastic);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Glow per card */
+.card:nth-child(1)::before {
+  background: radial-gradient(ellipse at 50% 0%, rgba(184,132,90,0.06) 0%, transparent 70%);
+}
+.card:nth-child(1):hover {
+  box-shadow: 0 0 60px -12px rgba(184,132,90,0.15);
+}
+
+.card:nth-child(2)::before {
+  background: radial-gradient(ellipse at 50% 0%, rgba(77,124,254,0.06) 0%, transparent 70%);
+}
+.card:nth-child(2):hover {
+  box-shadow: 0 0 60px -12px rgba(77,124,254,0.15);
+}
+
+.card:nth-child(3)::before {
+  background: radial-gradient(ellipse at 50% 0%, rgba(184,240,62,0.06) 0%, transparent 70%);
+}
+.card:nth-child(3):hover {
+  box-shadow: 0 0 60px -12px rgba(184,240,62,0.12);
+}
+
+/* ── Card Inner ── */
+.cardNumber {
+  font-family: var(--font-jetbrains-mono), var(--font-mono);
+  font-size: 13px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.05em;
+}
+
+.cardName {
+  font-family: var(--font-space-grotesk), var(--font-heading);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: var(--white-dim);
+  line-height: 1.6;
+}
+
+/* ── Gradient Strip ── */
+.gradientStrip {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  margin-top: auto;
+  opacity: 0.7;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .gradientStrip {
+  opacity: 1;
+}
+
+.strip1 {
+  background: linear-gradient(90deg, #b8845a, #e2b340);
+}
+
+.strip2 {
+  background: linear-gradient(90deg, #4d7cfe, #38bdf8);
+}
+
+.strip3 {
+  background: linear-gradient(90deg, #b8f03e, #34d399);
+}
+
+/* ── Arrow ── */
+.arrow {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.3);
+  font-size: 16px;
+  transition:
+    background 0.4s ease,
+    color 0.4s ease,
+    transform 0.4s var(--ease-elastic);
+}
+
+.card:hover .arrow {
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  transform: translate(2px, -2px);
+}
+
+/* ── Watermark ── */
+.watermark {
+  margin-top: 100px;
+  font-family: var(--font-jetbrains-mono), var(--font-mono);
+  font-size: 12px;
+  color: rgba(255,255,255,0.12);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
